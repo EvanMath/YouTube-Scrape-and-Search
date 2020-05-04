@@ -1,0 +1,2 @@
+# YouTube-Scrape-and-Search
+This repo started as a try of helping a friend. The main goal was to scrape YouTube for a specific region and category, create a dataset and do some analysis. Ultimately the result wasto create a searcher-scraper script for YouTube with multiple way to work it. For sure it can be much more improved and hope you help improve it as it is also my first work that it is public.
