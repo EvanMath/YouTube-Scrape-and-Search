@@ -9,6 +9,8 @@ search_url = 'https://www.googleapis.com/youtube/v3/search?'
 video_url = 'https://www.googleapis.com/youtube/v3/videos?'
 headers = ['video_id', 'channel_Id', 'title', 'channel_title', 'tags', 'duration', 'views',
                   'likes', 'dislikes', 'comments', 'favorite']
+quotas = 0
+
 
 def setup(api_path):
     #  Setting up the API key is important cause we are going to use some services of the YouTube.
@@ -38,6 +40,9 @@ def application_language_request(apikey):
 
 
 def search_request(apikey, country_code='GR', category="", pagetoken='&'):
+    global quotas
+    # search snippet cost 100
+    quotas += 100
     #  This repository is more like a search based on category app for YouTube and this is the heart of that.
     #  If you don't pass any argument in category parameter then does scrape the YouTube for the specific region code,
     #  Otherwise does search based on the category and the region code.
@@ -53,6 +58,9 @@ def search_request(apikey, country_code='GR', category="", pagetoken='&'):
 
 
 def video_request(apikey, videoid):
+    global quotas
+    # videos snippet, content details and statistics cost 7
+    quotas += 7
     #  This part gives us the additional features that we might need to use for analysis. Features that we can't take
     #  from the search part.
     url = video_url + f'part=snippet,contentDetails,statistics&id={videoid}'\
@@ -106,6 +114,9 @@ def get_languages(apikey):
 
 
 def get_categories(apikey, code='GR'):
+    global quotas
+    # video categories snippet cost 3
+    quotas += 3
     print(f"Video categories for region code:{code}...")
     c_data = videocat_request(apikey, code)
     items = c_data['items']
@@ -120,15 +131,30 @@ def get_categories(apikey, code='GR'):
 
 
 def get_pages(apikey,category):
+    global quotas
     next_page_token = '&'
     videos_list = []
-    # while next_page_token is not None:
-    videos = search_request(apikey, 'GR', category, next_page_token)
-    features = get_features(videos['items'], apikey)
-    videos_list += features
-    # next_page_token = videos.get('nextPageToken', None)
+    while (next_page_token is not None) or (quotas < 6000):
+        videos = search_request(apikey, 'GR', category, next_page_token)
+        if 'items' in videos.keys():
+            features = get_features(videos['items'], apikey)
+            with open(f'GR.csv', 'w+', encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
+                writer.writerow(headers)
+                for feature in features:
+                    temp_seq = []
+                    for key, value in feature.items():
+                        temp_seq.append(value)
+                    writer.writerow(temp_seq)
+                print("New video added...")
+        else:
+            print(videos)
+            break
+        videos_list += features
+        next_page_token += videos.get('nextPageToken', None)
+        print(f"You have request {quotas} queries")
     print(f'Videos collected {len(videos_list)}')
-    return videos_list
+    # return videos_list
 
 
 if __name__ == '__main__':
@@ -139,12 +165,13 @@ if __name__ == '__main__':
         for line in file.readlines():
             print(line.strip())
     pref_category = input('Choose one of the above categories or press "Enter" to continue... ')
-    data = get_pages(api_key, pref_category)
-    with open(f'GR.csv', 'w', encoding='utf-8') as file:
-        writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
-        writer.writerow(headers)
-        for video in data:
-            temp_seq = []
-            for key, value in video.items():
-                temp_seq.append(value)
-            writer.writerow(temp_seq)
+    get_pages(api_key, pref_category)
+    # data = get_pages(api_key, pref_category)
+    # with open(f'GR.csv', 'w', encoding='utf-8') as file:
+    #     writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
+    #     writer.writerow(headers)
+    #     for video in data:
+    #         temp_seq = []
+    #         for key, value in video.items():
+    #             temp_seq.append(value)
+    #         writer.writerow(temp_seq)
