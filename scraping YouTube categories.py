@@ -140,11 +140,11 @@ def get_pages(apikey,category):
     global quotas
     next_page_token = '&'
     videos_list = []
-    while (next_page_token is not None) or (quotas < 8000):
+    while (next_page_token is not None) or (quotas < 6000):
         videos = search_request(apikey, 'GR', category, next_page_token)
         if 'items' in videos.keys():
             features = get_features(videos['items'], apikey)
-            with open(f'GR.csv', 'a+', encoding='utf-8') as file:
+            with open(f'GR.csv', 'a+', encoding='utf-8', newline='') as file:
                 writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
                 writer.writerow(headers)
                 for feature in features:
@@ -152,7 +152,7 @@ def get_pages(apikey,category):
                     for key, value in feature.items():
                         temp_seq.append(value)
                     writer.writerow(temp_seq)
-                print(f"{len(videos)} new videos added...")
+                print(f"{len(features)} new videos added...")
         else:
             print(videos)
             break
@@ -172,12 +172,4 @@ if __name__ == '__main__':
             print(line.strip())
     pref_category = input('Choose one of the above categories or press "Enter" to continue... ')
     get_pages(api_key, pref_category)
-    # data = get_pages(api_key, pref_category)
-    # with open(f'GR.csv', 'w', encoding='utf-8') as file:
-    #     writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
-    #     writer.writerow(headers)
-    #     for video in data:
-    #         temp_seq = []
-    #         for key, value in video.items():
-    #             temp_seq.append(value)
-    #         writer.writerow(temp_seq)
+
