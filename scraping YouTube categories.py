@@ -67,7 +67,10 @@ def video_request(apikey, videoid):
         f'&fields=items(snippet(tags),contentDetails(duration),statistics)&key={apikey}'
     r = requests.get(url)
     video = r.json()
-    return video['items']
+    if 'items' in video.keys():
+        return video['items']
+    else:
+        return []
 
 
 def get_features(video_list, apikey):
@@ -80,6 +83,9 @@ def get_features(video_list, apikey):
         features['channel_Title'] = item['snippet'].get('channelTitle', None)
 
         video_info = video_request(apikey, features['video_id'])
+        if len(video_info) < 1:
+            print(f"No content details in video with ID:{features['video_id']}")
+            continue
         try:
             features['tags'] = video_info[0]['snippet'].get('tags', None)
         except KeyError:
@@ -134,11 +140,11 @@ def get_pages(apikey,category):
     global quotas
     next_page_token = '&'
     videos_list = []
-    while (next_page_token is not None) or (quotas < 6000):
+    while (next_page_token is not None) or (quotas < 8000):
         videos = search_request(apikey, 'GR', category, next_page_token)
         if 'items' in videos.keys():
             features = get_features(videos['items'], apikey)
-            with open(f'GR.csv', 'w+', encoding='utf-8') as file:
+            with open(f'GR.csv', 'a+', encoding='utf-8') as file:
                 writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
                 writer.writerow(headers)
                 for feature in features:
@@ -146,7 +152,7 @@ def get_pages(apikey,category):
                     for key, value in feature.items():
                         temp_seq.append(value)
                     writer.writerow(temp_seq)
-                print("New video added...")
+                print(f"{len(videos)} new videos added...")
         else:
             print(videos)
             break
