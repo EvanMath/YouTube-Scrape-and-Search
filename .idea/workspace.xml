@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="36e1cf6f-940c-4a6f-a45f-94de6757efc3" name="Default Changelist" comment="Small changes" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="scraping" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1bnXS7M3C0fCTdO164BJHjL7Wc3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Scripts for Internet" />
+  </component>
+  <component name="RunManager">
+    <configuration name="scraping YouTube categories" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\MyPc\AppData\Local\Programs\Python\Python38-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scraping YouTube categories.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.scraping YouTube categories" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36e1cf6f-940c-4a6f-a45f-94de6757efc3" name="Default Changelist" comment="" />
+      <created>1589268827665</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589268827665</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Change the main script, change the get_pages function so to create a csv file.">
+      <created>1589298059248</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589298059248</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Small changes to handle video requests without &quot;items&quot; field.">
+      <created>1589382185707</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589382185707</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Small changes">
+      <created>1589383608879</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589383608879</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Change the main script, change the get_pages function so to create a csv file." />
+    <MESSAGE value="Small changes to handle video requests without &quot;items&quot; field." />
+    <MESSAGE value="Small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small changes" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="654" y="275" key="#Notifications" timestamp="1589466221786">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="654" y="275" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1589466221786" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589465585643">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465585643" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589465926195">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465926195" />
+    <state x="484" y="0" key="#scraping_YouTube_categories" timestamp="1589465530107">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="484" y="0" key="#scraping_YouTube_categories/0.0.1536.824@0.0.1536.824" timestamp="1589465530107" />
+    <state x="387" y="0" key="CommitChangelistDialog2" timestamp="1589466213548">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="387" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589466213548" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1589465696173">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589465696173" />
+    <state width="757" height="210" key="GridCell.Tab.0.bottom" timestamp="1589466077684">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="757" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589466077684" />
+    <state width="757" height="210" key="GridCell.Tab.0.center" timestamp="1589466077684">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="757" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589466077684" />
+    <state width="757" height="210" key="GridCell.Tab.0.left" timestamp="1589466077684">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="757" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589466077684" />
+    <state width="757" height="210" key="GridCell.Tab.0.right" timestamp="1589466077684">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="757" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589466077684" />
+    <state x="147" y="65" key="MergeDialog" timestamp="1589465492511">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465492511" />
+    <state x="501" y="133" key="RollbackChangesDialog" timestamp="1589293452159">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="501" y="133" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589293452159" />
+    <state x="523" y="125" key="git4idea.branch.GitSmartOperationDialog" timestamp="1589465262216">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="523" y="125" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465262216" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589293268307">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589293268307" />
+  </component>
+</project>
