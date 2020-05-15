@@ -140,7 +140,7 @@ def get_pages(apikey,category):
     global quotas
     next_page_token = '&'
     videos_list = []
-    while (next_page_token is not None) or (quotas < 6000):
+    while (next_page_token is not None) and (quotas < 8000):
         videos = search_request(apikey, 'GR', category, next_page_token)
         if 'items' in videos.keys():
             features = get_features(videos['items'], apikey)
