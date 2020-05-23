@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36e1cf6f-940c-4a6f-a45f-94de6757efc3" name="Default Changelist" comment="Small changes" />
+    <list default="true" id="36e1cf6f-940c-4a6f-a45f-94de6757efc3" name="Default Changelist" comment="Small changes">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2020_5_07_____Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2020_5_07_____Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/api_key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraping YouTube categories.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraping YouTube categories.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="scraping" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -103,10 +108,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465585643" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589465926195">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590259330467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465926195" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590259330467" />
     <state x="484" y="0" key="#scraping_YouTube_categories" timestamp="1589465530107">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -119,22 +124,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589465696173" />
-    <state width="757" height="210" key="GridCell.Tab.0.bottom" timestamp="1589466077684">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590265178001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="757" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589466077684" />
-    <state width="757" height="210" key="GridCell.Tab.0.center" timestamp="1589466077684">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590265178001" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590265178001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="757" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589466077684" />
-    <state width="757" height="210" key="GridCell.Tab.0.left" timestamp="1589466077684">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590265178001" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590265178001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="757" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589466077684" />
-    <state width="757" height="210" key="GridCell.Tab.0.right" timestamp="1589466077684">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590265178001" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590265178001">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="757" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589466077684" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590265178001" />
     <state x="147" y="65" key="MergeDialog" timestamp="1589465492511">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -147,9 +152,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="523" y="125" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465262216" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589293268307">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1590265291566">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589293268307" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1590265291566" />
   </component>
 </project>

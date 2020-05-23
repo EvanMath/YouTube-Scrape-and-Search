@@ -2,13 +2,13 @@ import requests
 from collections import OrderedDict
 import csv
 
-
 videoCategories_url = 'https://www.googleapis.com/youtube/v3/videoCategories?'
 appLanguages_url = 'https://www.googleapis.com/youtube/v3/i18nLanguages?'
 search_url = 'https://www.googleapis.com/youtube/v3/search?'
 video_url = 'https://www.googleapis.com/youtube/v3/videos?'
+channel_url = 'https://www.googleapis.com/youtube/v3/channels?'
 headers = ['video_id', 'channel_Id', 'title', 'channel_title', 'tags', 'duration', 'views',
-                  'likes', 'dislikes', 'comments', 'favorite']
+           'likes', 'dislikes', 'comments', 'subscribers']
 quotas = 0
 
 
@@ -22,30 +22,58 @@ def setup(api_path):
     return apikey
 
 
-def videocat_request(apikey, ccode="GR", language='el'):
+def video_categories_req(apikey, ccode="GR", language='el'):
     #  This function requests all the possible categories for videos for specific region and language.
-    #  Change the parameters ccode and language with them that you are interested in
+    #  Change the parameters "ccode" and "language" with them yours desired
     url = videoCategories_url + f'part=snippet&hl={language}&regionCode={ccode}&key={apikey}'
     r = requests.get(url)
     c_data = r.json()
+    #  returns a dict
     return c_data
 
 
 def application_language_request(apikey):
-    #  This part will return all languages that are applicable with the services we use and their abbreviations
+    #  Here we get all languages and their abbreviations that are applicable with the services we use
     url = appLanguages_url + f'part=snippet&key={apikey}'
     r = requests.get(url)
     l_data = r.json()
+    #  returns a dict
     return l_data
 
 
-def search_request(apikey, country_code='GR', category="", pagetoken='&'):
+def get_categories(apikey, code='GR'):
     global quotas
-    # search snippet cost 100
+    # video categories snippet cost 3
+    quotas += 3
+    print(f"Video categories for region code:{code}...")
+    c_data = video_categories_req(apikey, code)
+    items = c_data['items']
+    categories_dict = {}
+    for i in range(len(items)):
+        key = items[i]['id']
+        value = items[i]['snippet']['title']
+        categories_dict[key] = value
+    with open(f'{code}_YouTube_Cat.csv', 'w') as file:
+        for video_id, cat in categories_dict.items():
+            file.write(f'{video_id}: {cat}\n')
+
+
+def get_languages(apikey):
+    lang_data = application_language_request(apikey)
+    languages = lang_data['items']
+    print(f'Retrieved {len(languages)} languages...')
+    with open('YouTube Languages.txt', 'w') as file:
+        for i in range(len(languages)):
+            file.write(f'{languages[i]["id"]}: {languages[i]["snippet"]["name"]}\n')
+
+
+def search_request(apikey, country_code='GR', category="", pagetoken='&'):
+    # TODO Should the number of results for each search request so that I don't ask for more than the available
+    global quotas
+    #  search snippet cost 100
     quotas += 100
-    #  This repository is more like a search based on category app for YouTube and this is the heart of that.
-    #  If you don't pass any argument in category parameter then does scrape the YouTube for the specific region code,
-    #  Otherwise does search based on the category and the region code.
+    #  If you don't pass any argument in category parameter then will search YouTube for the specific region code,
+    #  Otherwise searches based on the category and the region code.
     if category == "":
         url = search_url + f'fields=nextPageToken,items(id(videoId),snippet(channelId,title,channelTitle))&maxResults=50&' \
                            f'part=snippet{pagetoken}regionCode={country_code}&type=video&key={apikey}'
@@ -54,7 +82,19 @@ def search_request(apikey, country_code='GR', category="", pagetoken='&'):
                            f'part=snippet{pagetoken}regionCode={country_code}&type=video&videoCategoryId={category}&key={apikey}'
     r = requests.get(url)
     search_data = r.json()
+    #  returns a dictionary with keys: "nextPageToken", "items". The value of "items"
+    #  is a list of dictionaries, one per video
     return search_data
+
+
+def channel_subscribers(apikey, channelid):
+    global quotas
+    # channel requests cost 3 quotas
+    quotas += 3
+    url = channel_url + f'part=statistics&id={channelid}&key={apikey}'
+    r = requests.get(url)
+    subscribers = r.json()['items'][0]['statistics']['subscriberCount']  # this is a single value of type string
+    return subscribers
 
 
 def video_request(apikey, videoid):
@@ -63,12 +103,20 @@ def video_request(apikey, videoid):
     quotas += 7
     #  This part gives us the additional features that we might need to use for analysis. Features that we can't take
     #  from the search part.
-    url = video_url + f'part=snippet,contentDetails,statistics&id={videoid}'\
-        f'&fields=items(snippet(tags),contentDetails(duration),statistics)&key={apikey}'
+    url = video_url + f'part=snippet,contentDetails,statistics&id={videoid}' \
+                      f'&fields=items(snippet(tags),contentDetails(duration),statistics)&key={apikey}'
     r = requests.get(url)
     video = r.json()
+    #  video = {
+    #  "items": [
+    #  {"snippet": {tags:[tags]},
+    #  "contentDetails":{"duration": string},
+    #  "statistics":{"views":string,"likes": string, "dislikes": string, "favorite": string, "comments":string}}
+    #  ]
+    #  }
     if 'items' in video.keys():
-        return video['items']
+        #  returns a dict
+        return video['items'][0]
     else:
         return []
 
@@ -83,84 +131,59 @@ def get_features(video_list, apikey):
         features['channel_Title'] = item['snippet'].get('channelTitle', None)
 
         video_info = video_request(apikey, features['video_id'])
-        if len(video_info) < 1:
-            print(f"No content details in video with ID:{features['video_id']}")
+        if "statistics" not in video_info.keys():
+            print(f"Video with ID:{features['video_id']} is not valid!")
             continue
         try:
-            features['tags'] = video_info[0]['snippet'].get('tags', None)
+            features['tags'] = video_info['snippet'].get('tags', None)
         except KeyError:
             features['tags'] = None
         try:
-            features['duration'] = video_info[0]['contentDetails'].get('duration', None)
+            features['duration'] = video_info['contentDetails'].get('duration', None)
         except KeyError:
             features['duration'] = None
         try:
-            features['views'] = video_info[0]['statistics'].get('viewCount', None)
-            features['likes'] = video_info[0]['statistics'].get('likeCount', None)
-            features['dislikes'] = video_info[0]['statistics'].get('dislikeCount', None)
-            features['comments'] = video_info[0]['statistics'].get('commentCount', None)
-            features['favorite'] = video_info[0]['statistics'].get('favoriteCount', None)
+            features['views'] = video_info['statistics'].get('viewCount', None)
+            features['likes'] = video_info['statistics'].get('likeCount', None)
+            features['dislikes'] = video_info['statistics'].get('dislikeCount', None)
+            features['comments'] = video_info['statistics'].get('commentCount', None)
         except KeyError:
             features['views'] = None
             features['likes'] = None
             features['dislikes'] = None
             features['comments'] = None
-            features['favorite'] = None
+        subscribers = channel_subscribers(apikey, features['channel_Id'])
+        features['subscribers'] = subscribers
         videos.append(features)
+    #  returns a list of dicts. Each dict contains the desirable features for each video
     return videos
 
 
-def get_languages(apikey):
-    lang_data = application_language_request(apikey)
-    languages = lang_data['items']
-    print(f'Retrieved {len(languages)} languages...')
-    with open('YouTube Languages.txt', 'w') as file:
-        for i in range(len(languages)):
-            file.write(f'{languages[i]["id"]}: {languages[i]["snippet"]["name"]}\n')
-
-
-def get_categories(apikey, code='GR'):
-    global quotas
-    # video categories snippet cost 3
-    quotas += 3
-    print(f"Video categories for region code:{code}...")
-    c_data = videocat_request(apikey, code)
-    items = c_data['items']
-    categories_dict = {}
-    for i in range(len(items)):
-        key = items[i]['id']
-        value = items[i]['snippet']['title']
-        categories_dict[key] = value
-    with open(f'{code}_YouTube_Cat.csv', 'w') as file:
-        for video_id, cat in categories_dict.items():
-            file.write(f'{video_id}: {cat}\n')
-
-
-def get_pages(apikey,category):
+def get_pages(apikey, category):
     global quotas
     next_page_token = '&'
     videos_list = []
-    while (next_page_token is not None) and (quotas < 8000):
-        videos = search_request(apikey, 'GR', category, next_page_token)
-        if 'items' in videos.keys():
-            features = get_features(videos['items'], apikey)
-            with open(f'GR.csv', 'a+', encoding='utf-8', newline='') as file:
-                writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
-                writer.writerow(headers)
-                for feature in features:
+    with open(f'GR.csv', 'a+', encoding='utf-8', newline='') as file:
+        writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
+        writer.writerow(headers)
+        while (next_page_token is not None) and (quotas < 9000):
+            videos_dict = search_request(apikey, 'GR', category, next_page_token)  # this is a dict
+            if 'items' in videos_dict.keys():
+                videos = get_features(videos_dict['items'], apikey)  # this is a list of dicts represent videos
+                for features in videos:  # features is a dict
                     temp_seq = []
-                    for key, value in feature.items():
+                    for key, value in features.items():
                         temp_seq.append(value)
                     writer.writerow(temp_seq)
-                print(f"{len(features)} new videos added...")
-        else:
-            print(videos)
-            break
-        videos_list += features
-        next_page_token += videos.get('nextPageToken', None)
-        print(f"You have request {quotas} queries")
+                print(f"{len(videos)} new videos added...")
+            else:
+                print(videos_dict)
+                break
+            videos_list += videos
+            # TODO check next_page_token if it should be = '&' + videos_dict['nextPageToken'] + '&'
+            next_page_token += videos_dict.get('nextPageToken', None)
+            print(f"You have request {quotas} queries")
     print(f'Videos collected {len(videos_list)}')
-    # return videos_list
 
 
 if __name__ == '__main__':
@@ -172,4 +195,3 @@ if __name__ == '__main__':
             print(line.strip())
     pref_category = input('Choose one of the above categories or press "Enter" to continue... ')
     get_pages(api_key, pref_category)
-
