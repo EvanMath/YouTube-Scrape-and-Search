@@ -68,18 +68,19 @@ def get_languages(apikey):
 
 
 def search_request(apikey, country_code='GR', category="", pagetoken='&'):
-    # TODO Should the number of results for each search request so that I don't ask for more than the available
     global quotas
     #  search snippet cost 100
     quotas += 100
     #  If you don't pass any argument in category parameter then will search YouTube for the specific region code,
     #  Otherwise searches based on the category and the region code.
     if category == "":
-        url = search_url + f'fields=nextPageToken,items(id(videoId),snippet(channelId,title,channelTitle))&maxResults=50&' \
-                           f'part=snippet{pagetoken}regionCode={country_code}&type=video&key={apikey}'
+        url = search_url + f'fields=nextPageToken,items(id(videoId),snippet(channelId,title,channelTitle))' \
+                           f'&maxResults=50&part=snippet&pageToken={pagetoken}regionCode={country_code}' \
+                           f'&type=video&key={apikey}'
     else:
-        url = search_url + f'fields=nextPageToken,items(id(videoId),snippet(channelId,title,channelTitle))&maxResults=50&' \
-                           f'part=snippet{pagetoken}regionCode={country_code}&type=video&videoCategoryId={category}&key={apikey}'
+        url = search_url + f'fields=nextPageToken,items(id(videoId),snippet(channelId,title,channelTitle))' \
+                           f'&maxResults=50&part=snippet&pageToken={pagetoken}regionCode={country_code}' \
+                           f'&type=video&videoCategoryId={category}&key={apikey}'
     r = requests.get(url)
     search_data = r.json()
     #  returns a dictionary with keys: "nextPageToken", "items". The value of "items"
@@ -180,8 +181,7 @@ def get_pages(apikey, category):
                 print(videos_dict)
                 break
             videos_list += videos
-            # TODO check next_page_token if it should be = '&' + videos_dict['nextPageToken'] + '&'
-            next_page_token += videos_dict.get('nextPageToken', None)
+            next_page_token = videos_dict['nextPageToken'] + '&'
             print(f"You have request {quotas} queries")
     print(f'Videos collected {len(videos_list)}')
 

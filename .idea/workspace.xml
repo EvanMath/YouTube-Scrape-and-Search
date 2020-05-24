@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36e1cf6f-940c-4a6f-a45f-94de6757efc3" name="Default Changelist" comment="Small changes">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2020_5_07_____Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2020_5_07_____Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="36e1cf6f-940c-4a6f-a45f-94de6757efc3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/api_key.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraping YouTube categories.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraping YouTube categories.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,14 +88,22 @@
       <option name="project" value="LOCAL" />
       <updated>1589383608879</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adding a function to get subscribers for channel&#10;Adding hints and TODO comments">
+      <created>1590267371224</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1590267371224</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Change the main script, change the get_pages function so to create a csv file." />
     <MESSAGE value="Small changes to handle video requests without &quot;items&quot; field." />
     <MESSAGE value="Small changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small changes" />
+    <MESSAGE value="Adding a function to get subscribers for channel&#10;Adding hints and TODO comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding a function to get subscribers for channel&#10;Adding hints and TODO comments" />
   </component>
   <component name="WindowStateProjectService">
     <state x="654" y="275" key="#Notifications" timestamp="1589466221786">
@@ -108,38 +114,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465585643" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590259330467">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590306964820">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590259330467" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1590306964820" />
     <state x="484" y="0" key="#scraping_YouTube_categories" timestamp="1589465530107">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="484" y="0" key="#scraping_YouTube_categories/0.0.1536.824@0.0.1536.824" timestamp="1589465530107" />
-    <state x="387" y="0" key="CommitChangelistDialog2" timestamp="1589466213548">
+    <state x="387" y="0" key="CommitChangelistDialog2" timestamp="1590267370677">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="387" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589466213548" />
+    <state x="387" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590267370677" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1589465696173">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589465696173" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590265178001">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590306866341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590265178001" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590265178001">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590306866341" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590306866341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590265178001" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590265178001">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590306866341" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590306866341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590265178001" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590265178001">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590306866341" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590306866341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590265178001" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590306866341" />
     <state x="147" y="65" key="MergeDialog" timestamp="1589465492511">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
