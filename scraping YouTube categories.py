@@ -164,10 +164,10 @@ def get_pages(apikey, category):
     global quotas
     next_page_token = '&'
     videos_list = []
-    with open(f'GR.csv', 'a+', encoding='utf-8', newline='') as file:
+    with open(f'GR-{category}.csv', 'a+', encoding='utf-8', newline='') as file:
         writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
         writer.writerow(headers)
-        while (next_page_token is not None) and (quotas < 7000):
+        while (next_page_token is not None) and (quotas < 9000):
             videos_dict = search_request(apikey, 'GR', category, next_page_token)  # this is a dict
             if 'items' in videos_dict.keys():
                 videos = get_features(videos_dict['items'], apikey)  # this is a list of dicts represent videos
