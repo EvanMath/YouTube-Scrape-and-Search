@@ -12,7 +12,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="adding_subscribers" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,6 +51,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.scraping YouTube categories" />
         <item itemvalue="Python.scraping YouTube categories" />
       </list>
     </recent_temporary>
@@ -137,34 +138,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589465696173" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590307147127">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590397400520">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590307147127" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590307147127">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590397400520" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590397400520">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590307147127" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590307147127">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590397400520" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590397400520">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590307147127" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590307147127">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590397400520" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590397400520">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590307147127" />
-    <state x="147" y="65" key="MergeDialog" timestamp="1589465492511">
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590397400520" />
+    <state x="147" y="65" key="MergeDialog" timestamp="1590397364487">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465492511" />
+    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590397364487" />
     <state x="501" y="133" key="RollbackChangesDialog" timestamp="1589293452159">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="501" y="133" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589293452159" />
-    <state x="523" y="125" key="git4idea.branch.GitSmartOperationDialog" timestamp="1589465262216">
+    <state x="523" y="125" key="git4idea.branch.GitSmartOperationDialog" timestamp="1590397347942">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="523" y="125" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1589465262216" />
+    <state x="523" y="125" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.824@0.0.1536.824" timestamp="1590397347942" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1590265291566">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
