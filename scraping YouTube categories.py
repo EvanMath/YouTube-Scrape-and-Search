@@ -13,8 +13,13 @@ quotas = 0
 
 
 def setup(api_path):
-    #  Setting up the API key is important cause we are going to use some services of the YouTube.
-    #  So go create a YouTube Data API v3 key and write it in the file api_key.txt.
+    """
+    Setting up the API key is important cause we are going to use services of the YouTube.
+    Create a YouTube Data API v3 key and write it in the file api_key.txt.
+
+    api_path: In case the file api_key.txt is in another folder
+    return: a string
+    """
     with open(api_path, 'r') as hfile:
         apikey = hfile.readline().strip()
     # with open(ccode_path, 'r') as hfile:
@@ -22,28 +27,45 @@ def setup(api_path):
     return apikey
 
 
-def video_categories_req(apikey, ccode="GR", language='el'):
-    #  This function requests all the possible categories for videos for specific region and language.
-    #  Change the parameters "ccode" and "language" with them yours desired
-    url = videoCategories_url + f'part=snippet&hl={language}&regionCode={ccode}&key={apikey}'
+def video_categories_req(apikey, country_code="GR", language='el'):
+    """
+    This function requests all the possible categories for videos for specific region and language.
+    Change the parameters "country_code" and "language" with them yours desired.
+
+    apikey: User's YouTube Data API v3 key
+    country_code: User's preferred country code (ISO 3166-1 alpha-2 country code)
+    language: Users preferred language
+    return: a dictionary of categories
+    """
+    url = videoCategories_url + f'part=snippet&hl={language}&regionCode={country_code}&key={apikey}'
     r = requests.get(url)
     c_data = r.json()
-    #  returns a dict
     return c_data
 
 
 def application_language_request(apikey):
-    #  Here we get all languages and their abbreviations that are applicable with the services we use
+    """
+    Here we get all languages and their abbreviations that are applicable with the services we use.
+
+    apikey: User's YouTube Data API v3 key
+    return: a dictionary of languages
+    """
     url = appLanguages_url + f'part=snippet&key={apikey}'
     r = requests.get(url)
     l_data = r.json()
-    #  returns a dict
     return l_data
 
 
 def get_categories(apikey, code='GR'):
+    """
+    Creates a file that holds videos categories
+    - Video categories snippet cost 3
+
+    apikey: User's YouTube Data API v3 key
+    code: User's country code
+    """
     global quotas
-    # video categories snippet cost 3
+
     quotas += 3
     print(f"Video categories for region code:{code}...")
     c_data = video_categories_req(apikey, code)
@@ -59,6 +81,11 @@ def get_categories(apikey, code='GR'):
 
 
 def get_languages(apikey):
+    """
+    Creates a file that holds languages we can use in YouTube services
+
+    apikey: User's YouTube Data API v3 key
+    """
     lang_data = application_language_request(apikey)
     languages = lang_data['items']
     print(f'Retrieved {len(languages)} languages...')
@@ -68,11 +95,23 @@ def get_languages(apikey):
 
 
 def search_request(apikey, country_code='GR', category="", pagetoken='&'):
+    """
+    Request for searching the YouTube. If you don't pass any argument in category parameter it will search
+    YouTube for the specific region code. Otherwise searches based on the category and the region code.
+    - Search snippet cost 100
+
+
+    apikey: User's YouTube Data API v3 key
+    country_code: User's country code
+    category: User's preferred category to search and scrape
+    pagetoken: Token to be used to go through the resulting pages
+    return: a dictionary with keys: "nextPageToken", "items". The value of "items" is a list of dictionaries,
+    one per video
+    """
     global quotas
-    #  search snippet cost 100
+
     quotas += 100
-    #  If you don't pass any argument in category parameter then will search YouTube for the specific region code,
-    #  Otherwise searches based on the category and the region code.
+
     if category == "":
         url = search_url + f'fields=nextPageToken,items(id(videoId),snippet(channelId,title,channelTitle))' \
                            f'&maxResults=50&part=snippet&pageToken={pagetoken}regionCode={country_code}' \
@@ -83,14 +122,21 @@ def search_request(apikey, country_code='GR', category="", pagetoken='&'):
                            f'&type=video&videoCategoryId={category}&key={apikey}'
     r = requests.get(url)
     search_data = r.json()
-    #  returns a dictionary with keys: "nextPageToken", "items". The value of "items"
-    #  is a list of dictionaries, one per video
+
     return search_data
 
 
 def channel_subscribers(apikey, channelid):
+    """
+    A helper function to retrieve the number of subscribers for each channel.
+    - Channel requests cost 3 quotas
+
+    apikey: User's YouTube Data API v3 key
+    channelid: Channel Id in YouTube. We get it from get_features()
+    return: string, the number of subscribers
+    """
     global quotas
-    # channel requests cost 3 quotas
+
     quotas += 3
     url = channel_url + f'part=statistics&id={channelid}&key={apikey}'
     r = requests.get(url)
@@ -99,11 +145,19 @@ def channel_subscribers(apikey, channelid):
 
 
 def video_request(apikey, videoid):
+    """
+    A helper function that retrieves additional features that we might need to use for analysis.
+    Features that we can't take from the search part.
+    - Video's snippet, content details and statistics cost 7
+
+    apikey: User's YouTube Data API v3 key
+    videoid: Video Id. We get it from get_features()
+    return: a dictionary or an empty list
+    """
     global quotas
-    # videos snippet, content details and statistics cost 7
+
     quotas += 7
-    #  This part gives us the additional features that we might need to use for analysis. Features that we can't take
-    #  from the search part.
+
     url = video_url + f'part=snippet,contentDetails,statistics&id={videoid}' \
                       f'&fields=items(snippet(tags),contentDetails(duration),statistics)&key={apikey}'
     r = requests.get(url)
@@ -116,13 +170,19 @@ def video_request(apikey, videoid):
     #  ]
     #  }
     if 'items' in video.keys():
-        #  returns a dict
         return video['items'][0]
     else:
         return []
 
 
 def get_features(video_list, apikey):
+    """
+    Helper function to extract features for each video.
+
+    video_list: List with features of each video
+    apikey: User's YouTube Data API v3 key
+    return: a list of dicts. Each dict contains the desirable features for each video
+    """
     videos = []
     for item in video_list:
         features = OrderedDict()
@@ -156,15 +216,22 @@ def get_features(video_list, apikey):
         subscribers = channel_subscribers(apikey, features['channel_Id'])
         features['subscribers'] = subscribers
         videos.append(features)
-    #  returns a list of dicts. Each dict contains the desirable features for each video
+
     return videos
 
 
 def get_pages(apikey, category):
+    """
+
+
+    apikey: User's YouTube Data API v3 key
+    category: User's category of choice
+    return: Creates a csv file for our analysis
+    """
     global quotas
     next_page_token = '&'
     videos_list = []
-    with open(f'GR-{category}.csv', 'a+', encoding='utf-8', newline='') as file:
+    with open(f'GR.csv', 'a+', encoding='utf-8', newline='') as file:
         writer = csv.writer(file, delimiter=',', quoting=csv.QUOTE_ALL)
         writer.writerow(headers)
         while (next_page_token is not None) and (quotas < 9000):
@@ -200,4 +267,6 @@ if __name__ == '__main__':
         for line in file.readlines():
             print(line.strip())
     pref_category = input('Choose one of the above categories or press "Enter" to continue... ')
+    # print('Go to "YouTube Languages.txt" and choose your desired language')
+    # pref_lang = input('Enter language: ')
     get_pages(api_key, pref_category)
